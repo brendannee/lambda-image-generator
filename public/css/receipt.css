@@ -1,0 +1,132 @@
+body {
+  background: #faf9f7;
+  color: #737c81;
+  font-family: AvenirNextPro; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+  font-weight: normal; }
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 24px; }
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px; }
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 16px; }
+
+h4 {
+  font-size: 14px; }
+
+h5 {
+  font-size: 12px; }
+
+a {
+  color: #2c3032; }
+  a:hover {
+    color: #4ab4f0;
+    text-decoration: none; }
+  a.link-blue {
+    color: #4ab4f0; }
+    a.link-blue:hover {
+      color: #2c3032; }
+
+body {
+  font-family: "Avenir Next LT Pro Regular", "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0; }
+
+.receipt {
+  padding: 15px 30px 0;
+  width: 600px; }
+
+.header {
+  height: 70px;
+  overflow: hidden;
+  padding: 20px 0 0; }
+  .header .logo {
+    background: url("../images/automatic-logo-header.png") 0 0 no-repeat;
+    float: left;
+    height: 33px;
+    width: 119px; }
+  .header .title {
+    float: right;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: right;
+    width: 150px; }
+
+.content {
+  background: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden; }
+  .content .top {
+    overflow: hidden;
+    padding: 20px 15px; }
+    .content .top .label {
+      font-size: 14px;
+      text-transform: uppercase; }
+    .content .top .distance,
+    .content .top .duration {
+      float: left;
+      text-align: center;
+      width: 80px; }
+      .content .top .distance .value,
+      .content .top .duration .value {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 50px; }
+    .content .top .duration {
+      padding-right: 20px; }
+    .content .top .start,
+    .content .top .end {
+      float: left;
+      width: 187px; }
+      .content .top .start .label,
+      .content .top .end .label {
+        padding-left: 25px;
+        text-transform: none; }
+      .content .top .start .value,
+      .content .top .end .value {
+        font-size: 14px;
+        padding-top: 13px; }
+    .content .top .start {
+      background: url("../images/tripview_a.png") 0 0 no-repeat;
+      padding-right: 15px; }
+    .content .top .end {
+      background: url("../images/tripview_b.png") 0 0 no-repeat; }
+  .content .bottom {
+    overflow: hidden;
+    padding: 0 10px 10px; }
+    .content .bottom .map {
+      display: block;
+      height: 350px; }
+      .content .bottom .map .no-map-info {
+        display: none; }
+      .content .bottom .map.no-map-available {
+        background-image: url("../images/map_noroute.png"), url("../images/map_world.png");
+        background-position: center 70px, 0 0;
+        background-repeat: no-repeat, no-repeat;
+        background-size: 58px auto, cover; }
+        .content .bottom .map.no-map-available .no-map-info {
+          display: block;
+          margin: 0 auto;
+          padding-top: 120px;
+          text-align: center;
+          width: 300px; }
+
+.footer {
+  line-height: 50px;
+  text-align: center; }

@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    title Automatic Expensify Integration
+    meta(http-equiv="content-type" content="text/html; charset=utf-8")
+    meta(http-equiv="X-UA-Compatible" content="chrome=1")
+    base(href="https://expensify.automatic.com/")
+    style
+      include ../public/css/receipt.css
+
+  body
+    .receipt
+      .header
+        .logo
+        .title Trip Receipt
+      .content
+        .top
+          .distance
+            .label miles
+            .value= distance
+          .duration
+            .label= duration_type
+            .value= duration
+          .start
+            .label= started_at_time + ' ' + started_at_date
+            .value= start_address.cleaned || 'Address not available'
+          .end
+            .label= ended_at_time
+            .value= end_address.cleaned || 'Address not available'
+        .bottom
+          if mapURL
+            img#map.map(src= mapURL)
+          else
+            .map.no-map-available
+              .no-map-info
+                h2 Route not available
+                p Either a phone was not present, or there was a connection issue during this trip.
+      .footer This trip was captured directly from the car with Automatic
+
+
+  script.      
+    window.setTimeout(function() {
+      if(window.callPhantom) {
+        window.callPhantom('takeShot');
+      }
+    }, 4000);

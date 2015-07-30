@@ -1,0 +1,26 @@
+{
+  "name": "automatic-trip-receipt",
+  "description": "Automatic Trip Receipt Generator",
+  "version": "0.1.0",
+  "author": {
+    "name": "Brendan Nee",
+    "email": "brendan@automatic.com",
+    "url": "http://www.automatic.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/automatic/automatic-trip-receipt.git"
+  },
+  "dependencies": {
+    "jade": "~1.11.0",
+    "moment-timezone": "~0.4.0",
+    "webshot": "~0.16.0"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  }
+}
