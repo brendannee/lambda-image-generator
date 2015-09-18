@@ -94,14 +94,20 @@ function formatTrip(trip) {
 
 // generate receipt image
 function createReceipt(trip, cb) {
-  webshot(jade.renderFile('./views/receipt.jade', trip), {
-    phantomPath: path.join(__dirname, 'phantomjs'),
+  var options = {
     siteType: 'html',
     streamType: 'png',
     takeShotOnCallback: true,
     timeout: 30000,
     windowSize: {width: 660, height: 660}
-  }, cb);
+  };
+
+  // if running on lambda, use the correct binary
+  if(process.platform !== 'darwin') {
+    options.phantomPath = path.join(__dirname, 'phantomjs');
+  }
+
+  webshot(jade.renderFile('./views/receipt.jade', trip), options, cb);
 }
 
 
@@ -131,7 +137,7 @@ exports.handler = function(event, context) {
   var trip = event;
 
   if (!trip) {
-    return context.fail(new Error('Invalid Input'));
+    return context.done(new Error('Invalid Input'));
   }
 
   trip.mapURL = getMapImage(trip);
@@ -139,7 +145,7 @@ exports.handler = function(event, context) {
   createReceipt(formatTrip(trip), function(e, renderStream) {
     if (e) {
       console.error(e);
-      return context.fail(e);
+      return context.done(e);
     }
 
     // collect all the parts
@@ -149,14 +155,14 @@ exports.handler = function(event, context) {
       bufs.push(d);
     })
     .on('error', function(e) {
-      return context.fail(e);
+      return context.done(e);
     })
     .on('end', function(){
       if (bufs.length) {
         var receipt = Buffer.concat(bufs);
-        context.succeed(receipt.toString('base64'));
+        context.done(null, receipt.toString('base64'));
       } else {
-        return context.fail(new Error('No image'));
+        return context.done(new Error('No image'));
       }
     });
   });
