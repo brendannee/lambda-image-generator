@@ -2,7 +2,9 @@ var fs = require('fs');
 var opener = require('opener');
 var lambda = require('./index.js');
 
+var args = process.argv.slice(2);
 var sampleData;
+var type = args[0] || 'image';
 
 try {
   sampleData = JSON.parse(fs.readFileSync('sample-data/trip.json', 'utf8'));
@@ -21,7 +23,13 @@ Context.done = function(e, message) {
   }
 
   var outputFileName = 'sample-data/trip.html';
-  var html = '<img src="data:image/png;base64,' + message + '">';
+  var html;
+
+  if(type === 'image') {
+    html = '<img src="data:image/png;base64,' + message + '">';
+  } else if(type === 'html') {
+    html = message;
+  }
 
   // Write temporary HTML file
   fs.writeFile(outputFileName, html, function(e) {
@@ -38,4 +46,8 @@ Context.done = function(e, message) {
   });
 };
 
-lambda.handler(sampleData, Context);
+if(type === 'image') {
+  lambda.handler(sampleData, Context);
+} else if(type === 'html') {
+  lambda.html(sampleData, Context);
+}
