@@ -1,6 +1,6 @@
-# Automatic Trip Receipt
+# Lambda Image Generator
 
-This is a node.js function designed to be run on Amazon Lambda.  It takes an Automatic trip object and returns a base64 image of a .png receipt.
+This is a node.js function designed to be run on Amazon Lambda.  It takes an Automatic [trip object](https://developer.automatic.com/api-reference/#tripserializer) and returns a base64 image of a .png receipt.
 
 An example of the receipt:
 
@@ -8,11 +8,31 @@ An example of the receipt:
 
 This function is available by POSTing to:
 
-https://7jrof6sju4.execute-api.us-east-1.amazonaws.com/prod/automaticTripReceipt
+https://l88zdv2agd.execute-api.us-east-1.amazonaws.com/prod/automaticTripReceipt
 
 For example:
 
-    curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{"url":"https://api.automatic.com/trip/T_ce5fb4aa2f3ea1dc/","id":"T_ce5fb4aa2f3ea1dc","user":"https://api.automatic.com/user/U_9855dcf2030c0111/","started_at":"2015-04-06T17:34:06.704000Z","ended_at":"2015-04-06T18:53:02.322000Z","distance_m":120878.2,"duration_s":4735.6,"vehicle":"https://api.automatic.com/vehicle/C_d0411b0c53b42478/","start_location":{"lat":37.54876,"accuracy_m":10,"lon":-121.27866},"start_address":{"name":"West Side Freeway, Vernalis, CA 95385, USA","display_name":"I-5, Vernalis, CA","street_number":"Unknown","street_name":"I-5","state":"CA","city":"Vernalis","country":"US"},"end_location":{"lat":37.76704,"accuracy_m":10,"lon":-122.41697},"end_address":{"name":"1454 15th Street, San Francisco, CA 94103, USA","display_name":"15th St, SF, CA","street_number":"1454","street_name":"15th St","state":"CA","city":"SF","country":"US"},"path":"yvddFpffcVowKnqOgg@xs@gVzc@a{ArvCcrF~oKebEnaIuy@z_BuF~IaIlKwwAvaB_[ha@aFpHyBnE{ApFu@hGKhF\\\\rLzBvt@lBpb@tG~u@lG|t@h@vNZ|RZ~Or@zNjHrv@fIfz@nA`HtClIzElHrCjCdHhEzDvCrDbExEbJzB`IlAtJ^nL~@nL~DdOzSrm@vFzOvCvKpErUbAzKIvJgBrL_BtEeDfGsBjDkB|E{A~IqAvWJtJpDn[vTxhBfDzN~Vdw@zu@x`CdBbGdBlI|@bHf@pJHtJcAhp@m@xb@BzK`AjVlI|}@fB~UfDb|@O|I]`EqD~XWrHWhpAu@rcEe@feCm@ndDa@p~@UtuBPpIf@dGtGhg@nG~c@jAnLR~FYf}B@`H\\\\hIzCh\\\\t@lXWdS_B~TuBfTqCxYkAvRu@~J}AtIuHnU_EzPmBrPY`FQfOhCjuAlApKpBbItCtMp@zHEhOe@pFeCtNq@`GWrG@pGx@pKrAdHrCpIvEdIrUrWtD|FbDfIlAhFrA`MHzFiAr[P|Ir@|G|Kxn@lAbM`@xJTbiAFfp@Vj]_@lG}@lF}B|GkEtGkSjQyTpR_E|EgTv`@yJdTmFnOwBhEaDzEe@n@qFtHkCnE}EvLmDfHcGbHcDbC{DnB}WpKiI~EwLpIqEhCsBv@iB\\\\sLjA_M~A}IfBgO~B}KfBuF|BcDxCwHdKsChCoH`FcD~CmIvL}EpDgMhF}PbGiCN}CMgF_BcEaDyIeJ{CaByCu@}CQyBHmFlAmIbEaMxHiIlGwJjF{H`EqGdEqHzHmC`EgErI_N~\\\\iLf\\\\wMb[wIlPaCxEqAvEq@jIg@lf@o@xNwBdPaClJ_FzMoJrUeFlH}T`TmC|DsEjKoHlSsD~QwC`RqHzh@iC~S{AjJ_C`G}MhRqCnEmEhJ_N|_@sBhI{E~VwBfKaBjDuDzCwCz@}KpBcIbB{FrC}EpEuAhB{AdC_FnJ{DrJmFfSqCdTuC~RkOndAmBxMQnFPxEpCdRj@~FWnG}AvF_CzF}@lFApDlArGfBnGpC~RFpANxBtChTl@fHD^z@xSBlEHtMl@dHRrBvCrUpBbIpApHfAzKbAbZx@xR`Cj\\\\nMt_BzC|MtJzTjJ|RpC~EtCpDdLvJrNnOxr@dv@ni@bm@vk@`o@xBvDnAfDjFhJnJvMvVf^pGzKhFpJxChCvDnAtDJhDYrG{B`A]jCOdBf@x@xALdF[jGw@pHe@nPMpQe@pCiAhNg@n@k@H}FiBqBcA?o@l@a@|FwAxBcAtCVnCB|CMfGWIoC","fuel_cost_usd":6.75,"fuel_volume_l":7.3,"average_kmpl":16.8,"average_from_epa_kmpl":17,"score_events":46.16,"score_speeding":-66.78,"hard_brakes":2,"hard_accels":0,"duration_over_70_s":1201,"duration_over_75_s":5,"duration_over_80_s":0,"vehicle_events":[{"lat":37.65499,"lon":-121.42847,"created_at":"2015-04-06T17:45:18Z","g_force":0.4,"type":"hard_brake"}],"start_timezone":"America/Los_Angeles","end_timezone":"America/Los_Angeles","city_fraction":0.01,"highway_fraction":0.99,"night_driving_fraction":0,"idling_time_s":null,"tags":[]}' https://7jrof6sju4.execute-api.us-east-1.amazonaws.com/prod/automaticTripReceipt
+    curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{"url":"https://api.automatic.com/trip/T_ce5fb4aa2f3ea1dc/","id":"T_ce5fb4aa2f3ea1dc","user":"https://api.automatic.com/user/U_9855dcf2030c0111/","started_at":"2015-04-06T17:34:06.704000Z","ended_at":"2015-04-06T18:53:02.322000Z","distance_m":120878.2,"duration_s":4735.6,"vehicle":"https://api.automatic.com/vehicle/C_d0411b0c53b42478/","start_location":{"lat":37.54876,"accuracy_m":10,"lon":-121.27866},"start_address":{"name":"West Side Freeway, Vernalis, CA 95385, USA","display_name":"I-5, Vernalis, CA","street_number":"Unknown","street_name":"I-5","state":"CA","city":"Vernalis","country":"US"},"end_location":{"lat":37.76704,"accuracy_m":10,"lon":-122.41697},"end_address":{"name":"1454 15th Street, San Francisco, CA 94103, USA","display_name":"15th St, SF, CA","street_number":"1454","street_name":"15th St","state":"CA","city":"SF","country":"US"},"path":"yvddFpffcVowKnqOgg@xs@gVzc@a{ArvCcrF~oKebEnaIuy@z_BuF~IaIlKwwAvaB_[ha@aFpHyBnE{ApFu@hGKhF\\\\rLzBvt@lBpb@tG~u@lG|t@h@vNZ|RZ~Or@zNjHrv@fIfz@nA`HtClIzElHrCjCdHhEzDvCrDbExEbJzB`IlAtJ^nL~@nL~DdOzSrm@vFzOvCvKpErUbAzKIvJgBrL_BtEeDfGsBjDkB|E{A~IqAvWJtJpDn[vTxhBfDzN~Vdw@zu@x`CdBbGdBlI|@bHf@pJHtJcAhp@m@xb@BzK`AjVlI|}@fB~UfDb|@O|I]`EqD~XWrHWhpAu@rcEe@feCm@ndDa@p~@UtuBPpIf@dGtGhg@nG~c@jAnLR~FYf}B@`H\\\\hIzCh\\\\t@lXWdS_B~TuBfTqCxYkAvRu@~J}AtIuHnU_EzPmBrPY`FQfOhCjuAlApKpBbItCtMp@zHEhOe@pFeCtNq@`GWrG@pGx@pKrAdHrCpIvEdIrUrWtD|FbDfIlAhFrA`MHzFiAr[P|Ir@|G|Kxn@lAbM`@xJTbiAFfp@Vj]_@lG}@lF}B|GkEtGkSjQyTpR_E|EgTv`@yJdTmFnOwBhEaDzEe@n@qFtHkCnE}EvLmDfHcGbHcDbC{DnB}WpKiI~EwLpIqEhCsBv@iB\\\\sLjA_M~A}IfBgO~B}KfBuF|BcDxCwHdKsChCoH`FcD~CmIvL}EpDgMhF}PbGiCN}CMgF_BcEaDyIeJ{CaByCu@}CQyBHmFlAmIbEaMxHiIlGwJjF{H`EqGdEqHzHmC`EgErI_N~\\\\iLf\\\\wMb[wIlPaCxEqAvEq@jIg@lf@o@xNwBdPaClJ_FzMoJrUeFlH}T`TmC|DsEjKoHlSsD~QwC`RqHzh@iC~S{AjJ_C`G}MhRqCnEmEhJ_N|_@sBhI{E~VwBfKaBjDuDzCwCz@}KpBcIbB{FrC}EpEuAhB{AdC_FnJ{DrJmFfSqCdTuC~RkOndAmBxMQnFPxEpCdRj@~FWnG}AvF_CzF}@lFApDlArGfBnGpC~RFpANxBtChTl@fHD^z@xSBlEHtMl@dHRrBvCrUpBbIpApHfAzKbAbZx@xR`Cj\\\\nMt_BzC|MtJzTjJ|RpC~EtCpDdLvJrNnOxr@dv@ni@bm@vk@`o@xBvDnAfDjFhJnJvMvVf^pGzKhFpJxChCvDnAtDJhDYrG{B`A]jCOdBf@x@xALdF[jGw@pHe@nPMpQe@pCiAhNg@n@k@H}FiBqBcA?o@l@a@|FwAxBcAtCVnCB|CMfGWIoC","fuel_cost_usd":6.75,"fuel_volume_l":7.3,"average_kmpl":16.8,"average_from_epa_kmpl":17,"score_events":46.16,"score_speeding":-66.78,"hard_brakes":2,"hard_accels":0,"duration_over_70_s":1201,"duration_over_75_s":5,"duration_over_80_s":0,"vehicle_events":[{"lat":37.65499,"lon":-121.42847,"created_at":"2015-04-06T17:45:18Z","g_force":0.4,"type":"hard_brake"}],"start_timezone":"America/Los_Angeles","end_timezone":"America/Los_Angeles","city_fraction":0.01,"highway_fraction":0.99,"night_driving_fraction":0,"idling_time_s":null,"tags":[]}' https://l88zdv2agd.execute-api.us-east-1.amazonaws.com/prod/automaticTripReceipt
+
+
+## Setup
+
+AWS Lambda needs a different version of the `phantomjs` binary than the one needed to run on max os.  This unix binary is included in this repo.
+
+Install dependencies:
+
+    npm install
+
+
+## Running locally
+
+A script has been created that simulates the lambda environment and will allow you to test locally.  This script generates the base64 formatted image, puts it inside of an HTML image tag and saves an HTML.  It will then try to open it in your browser for viewing.
+
+To run locally:
+
+    node local
+
+You can edit the input data that the local instance uses by editing `sample-data/trip.json`.
 
 
 ## Deploying to Amazon Lambda
