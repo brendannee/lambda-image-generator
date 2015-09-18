@@ -167,3 +167,18 @@ exports.handler = function(event, context) {
     });
   });
 };
+
+
+exports.html = function(event, context) {
+  var trip = event;
+
+  if (!trip) {
+    return context.done(new Error('Invalid Input'));
+  }
+
+  trip.mapURL = getMapImage(trip);
+
+  var html = jade.renderFile('./views/receipt.jade', formatTrip(trip));
+
+  context.done(null, html);
+};
