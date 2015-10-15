@@ -10,15 +10,15 @@
     "url": "http://github.com/brendannee/lambda-image-generator.git"
   },
   "dependencies": {
-    "jade": "~1.11.0",
-    "moment-timezone": "~0.4.0",
-    "webshot": "~0.16.0"
+    "jade": "1.11.0",
+    "moment-timezone": "0.4.1",
+    "webshot": "0.16.0"
   },
   "devDependencies": {
-    "opener": "~1.4.1"
+    "opener": "1.4.1"
   },
   "engines": {
-    "node": "0.12.x"
+    "node": "4.2.x"
   },
   "scripts": {
     "start": "node local.js"
